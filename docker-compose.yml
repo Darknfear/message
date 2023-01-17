@@ -1,0 +1,10 @@
+version: "3.0"
+services:
+  backend:
+    env_file: .env
+    build: .
+    networks: 
+      - my-network
+networks:
+  my-network:
+   driver: bridge
