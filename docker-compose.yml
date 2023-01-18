@@ -3,8 +3,26 @@ services:
   backend:
     env_file: .env
     build: .
+    restart: always
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    ports:
+      - 3000:${PORT}
+    depends_on:
+      - db-backend
     networks: 
       - my-network
+  db-backend:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=message_dev
+    ports:
+      - 5432:5432
+    volumes:
+      - /data/db:/var/lib/postgresql/data
 networks:
   my-network:
    driver: bridge

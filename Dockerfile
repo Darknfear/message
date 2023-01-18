@@ -16,14 +16,14 @@ RUN chmod +x /app/docker-entrypoint.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-ENV NODE_ENV development
+ENV NODE_ENV=development
 
 CMD ["npm", "run", "start:dev"]
 
 # Production build
 FROM common-build as production-build
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 RUN npm run build
 
