@@ -20,11 +20,11 @@ ENV NODE_ENV=development
 
 CMD ["npm", "run", "start:dev"]
 
-# Production build
-FROM common-build as production-build
+# # Production build
+# FROM common-build as production-build
 
-ENV NODE_ENV=production
+# ENV NODE_ENV=production
 
-RUN npm run build
+# RUN npm run build
 
-CMD ["npm", "run", "start"]
+# CMD ["npm", "run", "start"]

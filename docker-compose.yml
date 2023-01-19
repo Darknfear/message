@@ -8,6 +8,8 @@ services:
       - NODE_ENV=${NODE_ENV}
     ports:
       - 3000:${PORT}
+    volumes:
+      - /src:/src
     depends_on:
       - db-backend
     networks: 
@@ -22,7 +24,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - /data/db:/var/lib/postgresql/data
+      - ./data/db:./var/lib/postgresql/data
     networks:
       - my-network
 networks:
