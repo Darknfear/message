@@ -7,3 +7,12 @@ jobs:
     steps:
       - run: echo "first step"
       - run: echo "second step"
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: npm i -g bats
+      - run: bats -v
