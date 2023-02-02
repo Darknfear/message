@@ -1,0 +1,9 @@
+name: demo-github-action
+run-name: ${{ github.actor }} is learning github actions
+on: [push]
+jobs:
+  print-text:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "first step"
+      - run: echo "second step"

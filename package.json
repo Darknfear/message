@@ -7,7 +7,7 @@
     "start": "node ./dist/server.js",
     "build": "tsc -p .",
     "dev": "nodemon ./src/server.ts",
-    "start:dev": "yarn build && yarn dev"
+    "start:dev": "npm run build && npm run dev"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
