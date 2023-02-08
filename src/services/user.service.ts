@@ -1,4 +1,5 @@
-import { UserOutputAttributes } from "db/models/user";
+import { UserOutputAttributes } from 'db/models/user';
 
-export const create = async (): Promise<UserOutputAttributes> => {
+export const create = async (): Promise<void> => {
+  const a = "d"
 }
