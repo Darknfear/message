@@ -1,7 +1,7 @@
 import DATABASE_ENV from '../../config/database.config';
 
-module.exports = {
-  dev: {
+module.exports =  {
+  development: {
     username: DATABASE_ENV.username,
     password: DATABASE_ENV.password,
     database: DATABASE_ENV.database,

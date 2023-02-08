@@ -3,7 +3,7 @@ import APP_ENV from './config/server.config';
 
 import express, { Express } from 'express';
 import bodyParser from 'body-parser';
-import { Database } from './databases/sequelize';
+import { Database } from './db/sequelize';
 
 // config app
 const app: Express = express();
