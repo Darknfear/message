@@ -7,11 +7,17 @@
     "start": "node ./dist/server.js",
     "build": "tsc -p .",
     "dev": "nodemon ./src/server.ts",
-    "start:dev": "npm run build && npm run dev",
-    "db:generate": "npx sequelize-cli migration:generate --name",
-    "db:migrate": "npm run build && npx sequelize-cli db:migrate",
-    "db:rollback-all": "npx sequelize-cli db:migrate:undo:all",
-    "db:rollback": "npx sequelize-cli db:migrate:undo",
+    "start:dev": "nodemon --watch 'src/**' --ext 'ts,json' --ignore 'src/**/*.spec.ts' --exec 'npm run build && node -r tsconfig-paths/register -r ts-node/register dist/app.js'",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "migration:generate": "npm run typeorm migration:generate -- -d src/configurations/typeorm.config.ts",
+    "migration:create": "npm run typeorm migration:create",
+    "migration:run": "npm run typeorm migration:run -- -d src/configurations/typeorm.config.ts",
+    "migration:revert": "npm run typeorm migration:revert -- -d src/configurations/typeorm.config.ts",
+    "migration:show": "npm run typeorm migration:show -- -d src/configurations/typeorm.config.ts",
+    "seed:create": "npm run typeorm migration:create",
+    "seed:run": "npm run typeorm migration:run -- -d src/configurations/typeorm-seed.config.ts",
+    "seed:revert": "npm run typeorm migration:revert -- -d src/configurations/typeorm-seed.config.ts",
+    "seed:show": "npm run typeorm migration:show -- -d src/configurations/typeorm-seed.config.ts",
     "eslint:fix": "eslint --fix"
   },
   "devDependencies": {
@@ -23,7 +29,6 @@
     "@types/joi": "^17.2.3",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.11.18",
-    "@types/sequelize": "^4.28.14",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
     "eslint": "^8.33.0",
@@ -31,7 +36,9 @@
     "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.20",
     "prettier": "^2.8.4",
-    "ts-node": "^10.9.1",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^4.9.4"
   },
   "dependencies": {
@@ -43,9 +50,24 @@
     "http-errors": "^2.0.0",
     "joi": "^17.7.0",
     "jsonwebtoken": "^9.0.0",
-    "pg": "^8.8.0",
+    "module-alias": "^2.2.3",
+    "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^6.28.0"
+    "typeorm": "^0.3.20"
+  },
+  "_moduleAliases": {
+    "@configs": "dist/configs",
+    "@core": "dist/core",
+    "@apps": "dist/apps",
+    "@constants": "dist/commons/constants",
+    "@dtos": "dist/commons/dtos",
+    "@decorators": "dist/commons/decorators",
+    "@filters": "dist/commons/filters",
+    "@guards": "dist/commons/guards",
+    "@pipes": "dist/commons/pipes",
+    "@utilities": "dist/commons/utilities",
+    "@entities": "dist/databases/entities",
+    "@storage": "dist/libs/storage"
   }
 }
