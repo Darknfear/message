@@ -1,5 +1,5 @@
-import { Router, Request, Response } from "express";
-import { catchAsync } from "../../../utils/catch-async";
+import { Router, Request, Response } from 'express';
+import { catchAsync } from '../../../utils/catch-async';
 import { login } from '../../../controllers/auth.controller';
 
 const route = Router();

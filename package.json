@@ -57,7 +57,7 @@
     "typeorm": "^0.3.20"
   },
   "_moduleAliases": {
-    "@configs": "dist/configs",
+    "@configs": "dist/configurations",
     "@core": "dist/core",
     "@apps": "dist/apps",
     "@constants": "dist/commons/constants",

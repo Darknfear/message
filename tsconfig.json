@@ -10,7 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES2022",
     "sourceMap": true,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "outDir": "./dist",
     "strict": true,
     "incremental": true,
