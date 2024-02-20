@@ -6,11 +6,13 @@ import 'module-alias/register';
 import 'reflect-metadata';
 
 import express, { Express } from 'express';
+import { createServer } from 'http';
 import bodyParser from 'body-parser';
 // import { Database } from './db/database';
 import { globalError, notFoundError } from './middlewares/error.middleware';
 import route from './routes';
 import { DatabaseConfiguration } from '@configs/database.config';
+import { SocketService } from '@libs/socket/socket.lib';
 
 // config app
 const app: Express = express();
@@ -40,6 +42,9 @@ app.use(notFoundError);
 // global response
 app.use(globalError);
 
-app.listen(process.env.PORT, () => {
+// create http server
+const httpServer = createServer(app);
+SocketService.getInstanceSocket(httpServer);
+httpServer.listen(process.env.PORT, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${process.env.PORT}`);
 });
